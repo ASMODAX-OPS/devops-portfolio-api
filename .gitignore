@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Entorno / secrets
+.env
+*.env.local
+
+# Editor
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+
+# Terraform (se usará en fases posteriores)
+*.tfstate
+*.tfstate.backup
+.terraform/

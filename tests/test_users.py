@@ -23,3 +23,18 @@ def test_list_users():
 def test_get_nonexistent_user():
     response = client.get("/api/users/99999")
     assert response.status_code == 404
+
+
+def test_delete_user():
+    response = client.post("/api/users", json={"name": "Carlos", "email": "carlos@example.com"})
+    user_id = response.json()["id"]
+
+    response = client.delete(f"/api/users/{user_id}")
+    assert response.status_code == 204
+
+    response = client.get(f"/api/users/{user_id}")
+    assert response.status_code == 404
+
+def test_delete_nonexistent_user():
+    response = client.delete("/api/users/99999")
+    assert response.status_code == 404

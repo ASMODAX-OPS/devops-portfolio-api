@@ -18,4 +18,11 @@ class UserStorage:
     def get_by_id(self, user_id: int) -> Optional[UserResponse]:
         return self._users.get(user_id)
 
+    def delete(self, user_id: int) -> bool:
+    
+        if user_id in self._users:
+            del self._users[user_id]
+            return True
+        return False
+
 user_storage = UserStorage()

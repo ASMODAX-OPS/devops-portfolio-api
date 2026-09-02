@@ -18,3 +18,9 @@ def get_user(user_id: int):
     if user is None:
         raise HTTPException(status_code=404, detail=f"User with id {user_id} not found")
     return user
+
+@router.delete("/{user_id}", status_code=204)
+def delete_user(user_id: int):
+    deleted = user_storage.delete(user_id)
+    if not deleted:
+        raise HTTPException(status_code=404, detail=f"User with id {user_id} not found")
